@@ -72,7 +72,7 @@ var Progress = React.createClass({
                 });
             var hintItem = (issueCount === 2 && state.clean) ? <Hintpoint /> : "";
 
-            /* mobile full item */
+            /* 訴求詳細版，mobile */
             var fullItem = 
             (isFocused) ? 
             <div className="Progress-issueFull">
@@ -88,6 +88,7 @@ var Progress = React.createClass({
                     <div className="Progress-focusItemLeft">政府回應</div>
                     <div className="Progress-focusItemMain">{i.govState}</div>
                 </div>
+                <div className="Progress-note">「政府回應」係整理自立法院第8屆第7會期內政委員會第6次全體委員會議中，內政部、中選會之<a className="Progress-link" href={govReportLink} target="_blank">專題報告</a>內容。</div>
             </div> : "";
             return (
               <a className={issueClasses}
@@ -100,10 +101,19 @@ var Progress = React.createClass({
             );
         }):"";
 
+        //在委員會旁邊加上「實質審查」
+        
+        var debateContentItem = (item.stage==="委員會") ?
+        <div>
+          <div className="Progress-labelSidenote">實質審查</div>
+          <div className="Progress-tri"></div>
+        </div>
+        : "";
         return (
            <div className={itemClasses}
                 key={key}>
                 <div className="Progress-unitPoint" />
+                {debateContentItem}
                 <div className={lableClasses}>
                   <div>{item.stage}</div>
                 </div>

@@ -46,9 +46,68 @@
         min-height: 30px;
 	}
 }
-.Progress-label {
-	margin-left: 10px;
+.Progress-tri {
+	width: 0;
+    height: 0;
+    border-style: solid;
     
+    border-width: 8.8px 5px 0 5px;
+    border-color: #A6ACB2 transparent transparent transparent;
+    position: absolute;
+    
+    top: 100px;
+    left: -8px;
+
+}
+@media all and (min-width: 600px){
+    .Progress-tri {
+    	border-width: 5px 0 5px 8.7px;
+        border-color: transparent transparent transparent #A6ACB2;
+        top: -14px;
+        left: auto;
+        right: -5px;
+        
+    }
+}
+
+.Progress-labelSidenote {
+	position: absolute;
+	top: 20px;
+  	left: -14px;
+  	width: 14px;
+
+	font-size: 14px;
+	padding-left: 5px;
+	padding-bottom: 1px;
+	color: rgb(100,100,100);
+	
+}
+.Progress-labelSidenote:before {
+	content: '';
+	position: relative;
+	top: 6px;
+	left: -5px;
+	
+}
+
+@media all and (min-width: 600px){  
+    .Progress-labelSidenote {
+    	top: -30px;
+    	left: 5px;
+    	width: 100%;
+    	border-bottom: 1px solid rgb(200,200,200);
+  
+    }
+    .Progress-labelSidenote:before {
+    	
+    	top: 6px;
+    	left: -5px;
+    	border-left: 1px solid rgb(200,200,200);
+    }
+}
+
+.Progress-label {
+	margin-left: 10px; 
 }
 @media all and (min-width: 600px){
 	.Progress-label {
@@ -119,13 +178,13 @@
 
 
 .Progress-issues {
-	margin-top: 30px;
+	margin-top: 10px;
 }
-@media all and (min-width: 600px){
+/*@media all and (min-width: 600px){
 	.Progress-issues {
 		margin-top: 10px;
 	}
-}
+}*/
 .Progress-issue {
 	background: white;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.12);
