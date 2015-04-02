@@ -1,0 +1,18 @@
+.BottomNav {
+	position: fixed;
+	bottom: 0;
+	height: 60px;
+	width: 100%;
+	background: white;
+	border-top: 1px solid gray;
+	text-align: center;
+}
+.BottomNav-pageDown {
+	cursor: pointer;
+	background: rgb(152,39,45);
+	display: inline-block;
+	color: white;
+	padding: 4px 8px;
+	
+
+}

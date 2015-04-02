@@ -1,8 +1,6 @@
 .Progress {
 	text-align: left;
 	padding: 10px 10px 20px 10px;
-
-	
 }
 @media all and (min-width: 1000px){
     .Progress {
@@ -10,36 +8,26 @@
     	margin: 0 auto;
     }
 }
-.Progress-title {
-	font-size: 50px;
-	font-weight: 900;
-	color: white;
-	display: block;
-	text-align: center;
-	color: rgb(209, 129, 75);
-}
-.Progress-intro {
-	background: rgba(255,255,255,0.9);
-}
 
+.Progress-title {
+	font-size: 30px;
+	font-weight: 800;
+}
 
 .Progress-bricks {
 	display: flex;
 	flex-direction: column;
 	margin-top: 10px;
-	margin-left: 20px;
+	margin-left: 8px;
 	border-left: 1px solid rgb(220,220,220);
 }
-
 .Progress-item {
 	display: inline-block;
 	vertical-align: top;
 	padding: 0 5px;
 	flex: 1;
-
-}
-.Progress-item.is-last {
-	border: none;
+	margin-top: 30px;
+	position: relative;
 }
 @media all and (min-width: 600px){
 	.Progress-bricks {
@@ -47,33 +35,20 @@
         border-left: none;
         flex-direction: row;
 	}
-	.Progress-items {
-		margin-top: 0;
-    }
 	.Progress-item {
 		min-width: 100px;
 		display: inline-block;
         vertical-align: top;
         padding: 0 5px;
         flex: 1;
+        margin-top: 0;
         margin-right: 10px;
         min-height: 30px;
 	}
 }
 .Progress-label {
-	background: rgb(200,200,200);
-	//background: #D1814B;
-	height: 22px;
-    width: 100px;
-
-	
-    margin: 6px 14px 14px 0px;
-    font-size: 16px; 
-
-    position: absolute;
-    left: 10px;
-    text-align: center;
-    margin: 2px;	
+	margin-left: 10px;
+    
 }
 @media all and (min-width: 600px){
 	.Progress-label {
@@ -81,71 +56,106 @@
 		background: rgb(200,200,200);
         position: relative;
 	    text-align: center;
-	    left:0;   
+	    left:0; 
+	    margin: 0;  
 	}
+    .Progress-label:before {
+    	content: '';
+    	position: absolute;
+    	top: 0px;
+    	right: -10px;
+    	border-top: 11px solid white;
+    	border-bottom: 11px solid white;
+    	border-left: 11px solid rgb(200,200,200);
+    }
+}
+.Progress-point {
+	flex: 0 0 44px;
+	position: relative;
+	margin-top: 30px;
+}
+.Progress-circle {
+	background: none;
+	padding: 0 5px;
+	margin-left: 10px;
 }
 
-/*.Progress-label.is-completed {
-	background: #94D4B6;
+@media all and (min-width: 600px){
+    .Progress-point {
+    	flex: 0 0 44px;
+    	position: relative;
+    	margin: 0;
+    }
+    .Progress-circle {
+    	display: block;
+    	border-radius: 50%;
+    	background: rgb(220,220,220);
+    	width: 40px;
+    	height: 40px;
+    	font-size: 14px;
+    	padding-top: 10px;
+        text-align: center;
+        margin: 0 5px 0 0;
+        position: absolute;
+        top: -8px;
+    }
 }
-.Progress-label.is-current {
-	background: gold;	
-}*/
-.Progress-label:before {
-	content: '';
+
+.Progress-unitPoint {
+	background: rgb(136,0,19);
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
 	position: absolute;
-	top: 0px;
-	right: -10px;
-	border-top: 11px solid #3F3939;
-	border-bottom: 11px solid #3F3939;
-	border-left: 11px solid rgb(200,200,200);
+	top: 5px;
+	left: -5px;
 }
-/*.Progress-label.is-completed:before {
-   border-left: 11px solid #94D4B6;
+@media all and (min-width: 600px){
+	.Progress-unitPoint {
+		display: none;
+	}
+
 }
-.Progress-label.is-current:before {
-   border-left: 11px solid gold;
-}*/
+
 
 .Progress-issues {
 	margin-top: 30px;
 }
-.Progress-issue {
-	background: white;
-    box-shadow: 2px 2px 0 0 rgba(0,0,0,0.12);
-    display: inline-block;
-    align-items: top;
-    vertical-align: top;
-    cursor: pointer;
-    margin: 2px;
-    min-height: 110px;
-    width: 30%;
-}
 @media all and (min-width: 600px){
-	.Progress-label {
-		position: relative;
-	}
 	.Progress-issues {
 		margin-top: 10px;
-
 	}
+}
+.Progress-issue {
+	background: white;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.12);
+    display: inline-block;
+    
+    cursor: pointer;
+    margin: 2px;
+    padding: 8px;
+    width: 100%;
+    border-left: 5px solid white;
+    
+}
+@media all and (min-width: 600px){
 	.Progress-issue {
-        background: white;
-		box-shadow: 2px 2px 0 0 rgba(0,0,0,0.12);
-		margin: 0px 0px 5px 0px;
-	
+		margin: 0px 0px 5px 2px;
 		display: flex;
-		
-		cursor: pointer;
-        min-height: 0;
 		width: auto;
     }
 }
 .Progress-issue:hover {
-	background: #D1814B;
+	
+	//background: wheat;
+	border-left: 5px solid rgb(247,227,214);
 }
 .Progress-issue.is-focused {
-	background: #D1814B;
+	//background: rgb(247,227,214);
+	
+    border-left: 5px solid rgb(139, 0, 19);
+	//background: rgb(230,231,226);
+	//background: rgb(246,217,132);
 }
 .Progress-issueLeft {
 	font-size: 24px;
@@ -162,24 +172,27 @@
 }
 .Progress-issueMain {
 	flex: 1;
-	padding: 4px 2px 2px 2px;
+	padding: 4px 2px 2px 4px;
 }
 
 
 
 /* ==================================================== */
 .Progress-focus {
-	color: white;
+	
 	margin-top: 30px;
 	//max-width: 500px;
 	//margin: 0 auto;
+    border: 1px solid gray;
+    padding: 10px;
 	
 }
 .Progress-focusTitle {
 	font-weight: 800;
 	font-size: 24px;
-	margin: 50px 0 10px 0;
-	border-left: 8px solid white;
+	//margin: 50px 0 10px 0;
+	border-left: 8px solid rgb(139, 0, 19);
+	border-left: 8px solid rgb(152, 39,45);
     padding-left: 8px;
 }
 .Progress-focusItem {
@@ -190,25 +203,13 @@
 }
 .Progress-focusItemLeft {
 	flex: 0 0 80px;
-	color: #D1814B;
+	color: rgb(139, 0, 19);
 	font-weight: 800;
 
 }
 .Progress-focusItemMain {
     flex: 1;
     
-}
-
-/* ==================================================== */
-.Progress-button {
-	cursor: pointer;
-	color: white;
-	padding: 4px;
-	display: inline-block;
-	margin-left: 10px;
-}
-.Progress-button.is-focused {
-	border-bottom: 1px solid;
 }
 
 
