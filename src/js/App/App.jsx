@@ -2,8 +2,6 @@
 
 var React = require('react/addons');
 
-var AppStore = require('../../stores/AppStore');
-var AppActions = require('../../actions/AppActions');
 
 var $ = require("jquery");
 
@@ -22,13 +20,9 @@ var BottomNav = require('../BottomNav/BottomNav.jsx');
 
 require('./App.css');
 
-function getBooks(){
-  return AppStore.getBooks();
-}
+
 
 var App = React.createClass({
-  
-  mixins: [React.addons.LinkedStateMixin],
   
   getInitialState(){
     return {
@@ -36,29 +30,6 @@ var App = React.createClass({
     }
   },
   
-  // //把 view 註冊到 stores，當 store 有改變/emit change 的時候，用 _onChange 這個 callback 處理
-  // componentDidMount () {
-  //   AppStore.addChangeListener(this._onChange);
-    
-  // },
-  
-  // componentWillUnmount () {
-  //   AppStore.removeChangeListener(this._onChange);
-  // },
-
-  _onPageDown (i, event) {
-     var next = this.state.currentIndex+1;
-     var next = next > 10 ? 4 : next;
-  	 this.setState({
-        currentIndex: next
-     });
-     var target = $(".App-block"+next);
-     $("html,body").animate({
-        scrollTop: target.offset().top
-     }, 500);
-  },
-
- 
 
   render () {
     var classSet = React.addons.classSet;
