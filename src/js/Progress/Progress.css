@@ -152,12 +152,11 @@
 	//background: wheat;
 	border-left: 5px solid rgb(247,227,214);
 }
-.Progress-issue.is-focused {
-	//background: rgb(247,227,214);
-	
-    border-left: 5px solid rgb(139, 0, 19);
-	//background: rgb(230,231,226);
-	//background: rgb(246,217,132);
+
+@media all and (min-width: 600px){
+    .Progress-issue.is-focused {
+    	border-left: 5px solid rgb(139, 0, 19);
+    }
 }
 .Progress-issueLeft {
 	font-size: 24px;
@@ -172,23 +171,50 @@
     color: white;
     padding-left: 2px;
 }
+
 .Progress-issueMain {
 	flex: 1;
-	padding: 4px 2px 2px 4px;
+	padding: 4px 2px 2px 0px;
+	font-weight: 800;
+	//border-left: 5px solid white;
+}
+/*.Progress-issue.is-focused > .Progress-issueMain {
+	border-left: 5px solid rgb(139, 0, 19);
+}
+@media all and (min-width: 600px){
+	.Progress-issue.is-focused > .Progress-issueMain {
+		border-left: none;
+    }
+}*/
+@media all and (min-width: 600px){
+	.Progress-issueMain {
+		padding: 4px 2px 2px 4px;
+		font-weight: 500;
+    }
 }
 
 
 
 /* ==================================================== */
 .Progress-focus {
-	
-	margin-top: 30px;
-	//max-width: 500px;
-	//margin: 0 auto;
-    border: 1px solid gray;
-    padding: 10px;
-	
+	display: none;
 }
+.Progress-issueFull {
+	display: block;
+}
+@media all and (min-width: 600px){
+	.Progress-focus {
+	   display: block;
+	   margin-top: 30px;
+       border: 1px solid gray;
+       padding: 10px;	
+    }
+    .Progress-issueFull {
+    	display: none;
+    }
+
+}
+
 .Progress-focusTitle {
 	font-weight: 800;
 	font-size: 24px;
@@ -210,7 +236,13 @@
 
 }
 .Progress-focusItemMain {
-    flex: 1;
+    flex: 1;   
+}
+.Progress-note {
+	font-size: 12px;
+}
+.Progress-link, .Progress-link:visited {
+    color: rgb(153,155,154);
     
 }
 

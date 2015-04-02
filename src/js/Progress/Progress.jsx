@@ -10,21 +10,34 @@ var Progress = React.createClass({
   getInitialState(){
     return {
       currentIssue: "",
+      expanded: {},
       clean: true
     }
   },
 
-  _onSetFocusIssue(i, event){
-    //console.log(i);
-    this.setState({
-      currentIssue: i,
-      clean: false
+  _onToggleFocusIssue(i, event){
 
+    var expanded = this.state.expanded;
+    if(!expanded[i.index])
+       expanded[i.index] = false;
+    expanded[i.index] = !expanded[i.index];
+    this.setState({
+        expanded: expanded,
+        clean: false
+    });
+    
+  },
+
+  _onSetFocusIssue(i, event){
+    this.setState({
+        currentIssue: i,
+        clean: false
     })
+
   },
   
   render () {
-    var data = this.props.data;
+    var { data, govReportLink } = this.props;
     var state = this.state;
     var classSet = React.addons.classSet;
   
@@ -49,21 +62,40 @@ var Progress = React.createClass({
 
         .map((i,k)=>{
             issueCount ++;
-            var boundClick = this._onSetFocusIssue.bind(null,i);
+            var boundClick = (window.innerWidth > 600) ?  this._onSetFocusIssue.bind(null,i) :
+            this._onToggleFocusIssue.bind(null,i);
+            
+            var isFocused = (window.innerWidth > 600) ? (i.index === this.state.currentIssue.index) : (this.state.expanded[i.index]);
             var issueClasses = classSet({
                   "Progress-issue" : true,
-                  "is-focused" : i.index === this.state.currentIssue.index
+                  "is-focused" : isFocused
                 });
             var hintItem = (issueCount === 2 && state.clean) ? <Hintpoint /> : "";
+
+            /* mobile full item */
+            var fullItem = 
+            (isFocused) ? 
+            <div className="Progress-issueFull">
+                <div className="Progress-focusItem">
+                    <div className="Progress-focusItemLeft">現行法律</div>
+                    <div className="Progress-focusItemMain">{i.currentLaw}</div>
+                </div>
+                <div className="Progress-focusItem">
+                    <div className="Progress-focusItemLeft">修改草案</div>
+                    <div className="Progress-focusItemMain">{i.proposedLaw}</div>
+                </div>
+                <div className="Progress-focusItem">
+                    <div className="Progress-focusItemLeft">政府回應</div>
+                    <div className="Progress-focusItemMain">{i.govState}</div>
+                </div>
+            </div> : "";
             return (
               <a className={issueClasses}
                  key={k}
-                 onClick={boundClick}
-                 >
-
+                 onClick={boundClick} >
                  {hintItem}
-                 
                  <div className="Progress-issueMain">{i.title}</div>
+                 {fullItem}
               </a>
             );
         }):"";
@@ -100,6 +132,7 @@ var Progress = React.createClass({
                 <div className="Progress-focusItemLeft">政府回應</div>
                 <div className="Progress-focusItemMain">{currentIssue.govState}</div>
             </div>
+            <div className="Progress-note">「政府回應」係整理自立法院第8屆第7會期內政委員會第6次全體委員會議中，內政部、中選會之<a className="Progress-link" href={govReportLink} target="_blank">專題報告</a>內容。</div>
         </div>
       ) : "";
 
@@ -114,6 +147,7 @@ var Progress = React.createClass({
           </div>
           
           {currentIssueItem}
+
           
       </div>
           

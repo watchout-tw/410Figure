@@ -21,7 +21,8 @@ var App = React.createClass({
     return (
       <div className="App">
           <div className="App-block">
-              <Progress data={data.data} issues={data.issues}/>
+              <Progress data={data.data} 
+                        govReportLink={data.govReportLink}/>
           </div>          
       </div>
       
