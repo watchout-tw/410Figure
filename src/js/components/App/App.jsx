@@ -70,7 +70,7 @@ var App = React.createClass({
       // <Intro data={introData1}/>,
       // <Intro data={introData2}/>,
       // <Intro data={introData3}/>,
-      <Progress data={dismissData.data} issues={dismissData.issues}/>,
+      //<Progress data={dismissData.data} issues={dismissData.issues}/>,
       <Progress data={referendumData.data} issues={referendumData.issues}/>
  
     ];
