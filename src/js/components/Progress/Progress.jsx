@@ -129,15 +129,41 @@ var Progress = React.createClass({
   getInitialState(){
     return {
        currentTopic: "公投法", //選罷法
-       currentIssue: ""
+       currentIssue: {
+          "index":"1",
+          "topic":"公投法",
+          "title":"擴大全國性公投適用範圍",
+          "currentLaw" : "依據《公民投票法》第2條，公投適用範圍為：法律之複決、立法原則創制、重大政策之創制複決、憲法修正案之複決；另外，也適用於地方自治事項。但是，預算、租稅、投資、薪俸及人事事項，不適用於公民投票的範圍。",
+          "proposedLaw" : "",
+          "govState" : ""
+        }
     }
   },
 
   _onSetFocusTopic(t, event){
     console.log(t);
+    
+    var defaultObj = (t === "公投法") ? {
+          "index":"1",
+          "topic":"公投法",
+          "title":"擴大全國性公投適用範圍",
+          "currentLaw" : "依據《公民投票法》第2條，公投適用範圍為：法律之複決、立法原則創制、重大政策之創制複決、憲法修正案之複決；另外，也適用於地方自治事項。但是，預算、租稅、投資、薪俸及人事事項，不適用於公民投票的範圍。",
+          "proposedLaw" : "",
+          "govState" : ""
+        } : {
+          "index":"1",
+          "topic":"選罷法",
+          "title":"提案門檻降低。刪除軍公職不得提議之規定",
+          "currentLaw" : "選罷法76條，提案罷免人數須在原選舉區選舉人總數2%以上；選罷法77條，現役軍人、服替代役之現役役男或公務人員，不得為罷免案提議人",
+          "proposedLaw" : "",
+          "govState" : "罷免影響政治秩序安定，制度上有一定限制。但門檻攸關人民參政權，支持理性討論"
+        };
+    
     this.setState({
-      currentTopic: t
+      currentTopic: t,
+      currentIssue: defaultObj
     })
+
   },
 
   _onSetFocusIssue(i, event){
@@ -158,9 +184,6 @@ var Progress = React.createClass({
           "is-last" : key == data.length-1
         })
 
-        
-
-       
         var issues = (item.issues) ? item.issues
 
         .filter((item)=>{
@@ -188,7 +211,7 @@ var Progress = React.createClass({
                 <div className="Progress-label">
                   <div>{item.stage}</div>
                 </div>
-                {issues}
+                <div className="Progress-issues">{issues}</div>
            </div>
         )
     });
