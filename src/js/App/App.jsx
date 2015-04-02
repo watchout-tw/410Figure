@@ -4,10 +4,10 @@ var React = require('react/addons');
 
 /* ===== GET JSON , Default set to 選罷法 ======= */
 
-var data = require("./data/dismiss");//選罷
+var data = require("../../data/dismiss");//選罷
 var hash = window.location.hash.substring(1); // remove #
 if(hash === "referendum"){
-  data = require("./data/referendum");//公投
+  data = require("../../data/referendum");//公投
 }
 
 var Progress = require('../Progress/Progress.jsx');

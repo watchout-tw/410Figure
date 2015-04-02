@@ -1,33 +1,37 @@
 /** @jsx React.DOM */
 
 var React = require('react/addons');
+var Hintpoint = require('../Hintpoint/Hintpoint.jsx');
+
 require('./Progress.css');
-
-
 
 var Progress = React.createClass({
   
   getInitialState(){
     return {
-      currentIssue: this.props.issues[0]
+      currentIssue: "",
+      clean: true
     }
   },
 
   _onSetFocusIssue(i, event){
-    console.log(i);
+    //console.log(i);
     this.setState({
-      currentIssue: i
+      currentIssue: i,
+      clean: false
+
     })
   },
   
   render () {
     var data = this.props.data;
+    var state = this.state;
     var classSet = React.addons.classSet;
   
     /*==================
            進度條
       ================== */
-
+    var issueCount = 0;
   	var progressBricks = data.map((item,key)=>{
         var itemClasses = classSet({
           "Progress-item" : item.type === "challenge",
@@ -44,15 +48,20 @@ var Progress = React.createClass({
         var issues = (item.issues) ? item.issues
 
         .map((i,k)=>{
+            issueCount ++;
             var boundClick = this._onSetFocusIssue.bind(null,i);
             var issueClasses = classSet({
                   "Progress-issue" : true,
                   "is-focused" : i.index === this.state.currentIssue.index
                 });
+            var hintItem = (issueCount === 2 && state.clean) ? <Hintpoint /> : "";
             return (
               <a className={issueClasses}
                  key={k}
-                 onClick={boundClick}>
+                 onClick={boundClick}
+                 >
+
+                 {hintItem}
                  
                  <div className="Progress-issueMain">{i.title}</div>
               </a>
@@ -77,7 +86,7 @@ var Progress = React.createClass({
  
     var currentIssue = this.state.currentIssue;
     var currentIssueItem = (currentIssue) ? (
-        <div>
+        <div className="Progress-focus"> 
             <div className="Progress-focusTitle">訴求 <br/> {currentIssue.title}</div>
             <div className="Progress-focusItem">
                 <div className="Progress-focusItemLeft">現行法律</div>
@@ -99,12 +108,13 @@ var Progress = React.createClass({
     return (
       
       <div className="Progress">
+          
           <div className="Progress-bricks">
             {progressBricks}
           </div>
-          <div className="Progress-focus"> 
-            {currentIssueItem}
-          </div>
+          
+          {currentIssueItem}
+          
       </div>
           
     );
