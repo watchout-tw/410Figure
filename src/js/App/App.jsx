@@ -19,20 +19,32 @@ require('./App.css');
 var App = React.createClass({
   
   render () {
-    var result = (data) ?
+    var progress = (data) ?
         <Progress data={data.data} 
                   govReportLink={data.govReportLink}/> : "網址錯誤";
-
-    return (
+    var result = (window.innerWidth >= 600) ? (
+      <div className="App">
+          <div className="App-block">
+              {progress}
+          </div>
+          <Intro/>
+          <div className="App-update">資料更新日期：2015年4月5日</div>   
+      </div>
+      
+    ):
+    (
       <div className="App">
           <Intro/>
           <div className="App-block">
-              {result}
+              {progress}
           </div>
+          
           <div className="App-update">資料更新日期：2015年4月5日</div>   
       </div>
       
     );
+
+    return result;
   }
 });
 
