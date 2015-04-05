@@ -15,17 +15,33 @@
 }
 
 .Progress-bricks {
-	display: flex;
+	display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+	
+	
+	-webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-box-direction: vertical;
+    -moz-box-direction: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
 	flex-direction: column;
 	margin-top: 10px;
-	margin-left: 8px;
+	margin-left: 18px;
 	border-left: 1px solid rgb(220,220,220);
 }
 .Progress-item {
 	display: inline-block;
 	vertical-align: top;
 	padding: 0 5px;
-	flex: 1;
+
+	-webkit-box-flex: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+    -webkit-flex: 1;       /* Safari 6.1+. iOS 7.1+, BB10 */
+    -ms-flex: 1;           /* IE 10 */
+    flex: 1;               /* NEW, Spec - Firefox, Chrome, Opera */
+	
 	margin-top: 30px;
 	position: relative;
 }
@@ -33,6 +49,13 @@
 	.Progress-bricks {
         margin-left: 0px;
         border-left: none;
+
+        -webkit-box-orient: horizontal;
+        -moz-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -moz-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
         flex-direction: row;
 	}
 	.Progress-item {
@@ -40,6 +63,11 @@
 		display: inline-block;
         vertical-align: top;
         padding: 0 5px;
+
+        -webkit-box-flex: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+        -webkit-flex: 1;       /* Safari 6.1+. iOS 7.1+, BB10 */
+        -ms-flex: 1;           /* IE 10 */
+        flex: 1;               /* NEW, Spec - Firefox, Chrome, Opera */
         flex: 1;
         margin-top: 0;
         margin-right: 10px;
@@ -55,8 +83,8 @@
     border-color: #A6ACB2 transparent transparent transparent;
     position: absolute;
     
-    top: 100px;
-    left: -8px;
+    top: 80px;
+    left: -19px;
 
 }
 @media all and (min-width: 600px){
@@ -72,8 +100,8 @@
 
 .Progress-labelSidenote {
 	position: absolute;
-	top: 20px;
-  	left: -14px;
+	top: 0px;
+  	left: -26px;
   	width: 14px;
 
 	font-size: 14px;
@@ -129,7 +157,11 @@
     }
 }
 .Progress-point {
+	-webkit-box-flex: 0 0 44px;   /* OLD - iOS 6-, Safari 3.1-6 */
+    -webkit-flex: 0 0 44px;       /* Safari 6.1+. iOS 7.1+, BB10 */
+    -ms-flex: 0 0 44px;           /* IE 10 */
 	flex: 0 0 44px;
+
 	position: relative;
 	margin-top: 30px;
 }
@@ -141,7 +173,6 @@
 
 @media all and (min-width: 600px){
     .Progress-point {
-    	flex: 0 0 44px;
     	position: relative;
     	margin: 0;
     }
@@ -202,7 +233,12 @@
 @media all and (min-width: 600px){
 	.Progress-issue {
 		margin: 0px 0px 5px 2px;
-		display: flex;
+
+		display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+        display: -ms-flexbox;  /* TWEENER - IE 10 */
+        display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+        display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+		
 		width: auto;
     }
 }
@@ -221,6 +257,10 @@
 	font-size: 24px;
 	font-weight: 800;
     text-align: center;
+
+    -webkit-box-flex: 0 0 30px;   /* OLD - iOS 6-, Safari 3.1-6 */
+    -webkit-flex: 0 0 30px;       /* Safari 6.1+. iOS 7.1+, BB10 */
+    -ms-flex: 0 0 30px;           /* IE 10 */
     flex: 0 0 30px;
     color: rgb(120,120,120);
 	
@@ -278,7 +318,7 @@
 	font-weight: 800;
 	font-size: 24px;
 	//margin: 50px 0 10px 0;
-	border-left: 8px solid rgb(139, 0, 19);
+	//border-left: 8px solid rgb(139, 0, 19);
 	border-left: 8px solid rgb(152, 39,45);
     padding-left: 8px;
 }
@@ -289,13 +329,20 @@
 	
 }
 .Progress-focusItemLeft {
+	-webkit-box-flex: 0 0 80px;   /* OLD - iOS 6-, Safari 3.1-6 */
+    -webkit-flex: 0 0 80px;       /* Safari 6.1+. iOS 7.1+, BB10 */
+    -ms-flex: 0 0 80px;           /* IE 10 */
 	flex: 0 0 80px;
 	color: rgb(139, 0, 19);
 	font-weight: 800;
 
 }
 .Progress-focusItemMain {
-    flex: 1;   
+	-webkit-box-flex: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+    -webkit-flex: 1;       /* Safari 6.1+. iOS 7.1+, BB10 */
+    -ms-flex: 1;           /* IE 10 */
+    flex: 1;               /* NEW, Spec - Firefox, Chrome, Opera */
+     
 }
 .Progress-note {
 	font-size: 12px;
