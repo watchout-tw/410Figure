@@ -67,7 +67,7 @@ module.exports = {
                 { 
                  "proposer" : "潘孟安",
                   "summary" : "兩岸政治協商前後強制公投",
-                  "link" : "http://ly.g0v.tw/bills/1574L13728#proposed-16-1"
+                  "link" : "http://ly.g0v.tw/bills/1574L13728#proposed-2"
                 },
                 { 
                   "proposer" : "陳唐山",

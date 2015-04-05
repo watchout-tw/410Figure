@@ -12,6 +12,7 @@ if(hash === "dismiss"){
 }
 
 var Progress = require('../Progress/Progress.jsx');
+var Intro = require('../Intro/Intro.jsx');
 
 require('./App.css');
 
@@ -24,6 +25,7 @@ var App = React.createClass({
 
     return (
       <div className="App">
+          <Intro/>
           <div className="App-block">
               {result}
           </div>
