@@ -14,7 +14,7 @@
 }
 
 .App-block {
-	margin: 50px 0 50px 0;
+	margin: 50px 0 0px 0;
 
 }
 .App-block.is-hide {
@@ -22,5 +22,10 @@
 	width: 0;
 	overflow: hidden;
 	margin: 0;*/
-	
+}
+.App-update {
+	font-size: 14px;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
 }

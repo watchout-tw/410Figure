@@ -26,7 +26,8 @@ var App = React.createClass({
       <div className="App">
           <div className="App-block">
               {result}
-          </div>          
+          </div>
+          <div className="App-update">資料更新日期：2015年4月5日</div>   
       </div>
       
     );
