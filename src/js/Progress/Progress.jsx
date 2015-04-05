@@ -76,20 +76,27 @@ var Progress = React.createClass({
 
             //// 各修法版本 //
             var proposedBillItem = (i.proposedBill) ? i.proposedBill.map((bill,bill_key)=>{
-                 //退回程序
-                 var withdrawItem = (bill.withdraw) ? 
-                 <span>（<span>{bill.withdraw.description}</span>）</span>: "";
-
-                 var separater = (bill_key < i.proposedBill.length-1) ? "、":"";
-                 return (
-                      <span key={bill_key}>
-                         <a className="Progress-link"
-                            href={bill.link} 
-                            target="_blank">{bill.proposer}版</a>
-                            {withdrawItem} {separater}
+                //console.log(bill);
+                var versions = bill.bills.map((stage, stage_index)=>{
+                    var separater = (stage_index < bill.bills.length-1) ? "、":"";
+                    return (
+                      <span key={stage_index}>
+                          <a className="Progress-link"
+                             href={stage.link} 
+                             target="_blank">{stage.proposer}版</a>
+                          {separater}
                       </span>
+                          
+                    )
+                });
+                return (
+                    <span key={bill_key}>
+                        <div>審議進度為「<b>{bill.progress}</b>」之版本：{versions}</div>
+                    </span>
                  )
             }) : "";
+
+            
             
             var fullItem = 
             (isFocused) ? 
@@ -149,18 +156,26 @@ var Progress = React.createClass({
     var currentIssue = this.state.currentIssue;
    
     var proposedBillItem = (currentIssue) ? currentIssue.proposedBill.map((i,k)=>{
-        //退回程序
+        //console.log(i);
 
-        var withdrawItem = (i.withdraw) ? 
-        <span>（<span>{i.withdraw.description}</span>）</span>: "";
+        var versions = i.bills.map((stage, stage_index)=>{
+          return (
+            <li key={stage_index}>
+                <a className="Progress-link"
+                   href={stage.link} 
+                   target="_blank">{stage.proposer}版</a>：{stage.summary}
+                 
+            </li>
+          )
+
+        })
         return (
             <div key={k}>
-                <a className="Progress-link"
-                   href={i.link} 
-                   target="_blank">{i.proposer}版</a>：{i.summary}
-                  {withdrawItem} 
+              <div>審議進度為「<b>{i.progress}</b>」之版本：</div>
+              <ul>{versions}</ul>
             </div>
         )
+        
     }) : "";
     var currentIssueItem = (currentIssue) ? (
         <div className="Progress-focus"> 
@@ -179,10 +194,7 @@ var Progress = React.createClass({
                    {proposedBillItem}
                 </div>
             </div>
-            <div className="Progress-focusItem">
-                <div className="Progress-focusItemLeft">審議進度</div>
-                <div className="Progress-focusItemMain">{currentIssue.progress}</div>
-            </div>
+            
             <div className="Progress-focusItem">
                 <div className="Progress-focusItemLeft">政府回應</div>
                 <div className="Progress-focusItemMain">{currentIssue.govState}</div>
