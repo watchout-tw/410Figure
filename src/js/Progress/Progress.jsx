@@ -73,6 +73,24 @@ var Progress = React.createClass({
             var hintItem = (issueCount === 2 && state.clean) ? <Hintpoint /> : "";
 
             /* 訴求詳細版，mobile */
+
+            //// 各修法版本 //
+            var proposedBillItem = (i.proposedBill) ? i.proposedBill.map((bill,bill_key)=>{
+                 //退回程序
+                 var withdrawItem = (bill.withdraw) ? 
+                 <span>（<span>{bill.withdraw.description}</span>）</span>: "";
+
+                 var separater = (bill_key < i.proposedBill.length-1) ? "、":"";
+                 return (
+                      <span key={bill_key}>
+                         <a className="Progress-link"
+                            href={bill.link} 
+                            target="_blank">{bill.proposer}版</a>
+                            {withdrawItem} {separater}
+                      </span>
+                 )
+            }) : "";
+            
             var fullItem = 
             (isFocused) ? 
             <div className="Progress-issueFull">
@@ -82,7 +100,7 @@ var Progress = React.createClass({
                 </div>
                 <div className="Progress-focusItem">
                     <div className="Progress-focusItemLeft">修改草案</div>
-                    <div className="Progress-focusItemMain">{i.proposedLaw}</div>
+                    <div className="Progress-focusItemMain">{proposedBillItem}</div>
                 </div>
                 <div className="Progress-focusItem">
                     <div className="Progress-focusItemLeft">政府回應</div>
@@ -125,18 +143,45 @@ var Progress = React.createClass({
     /*==================
            關注訴求
       ================== */
+
+      //// 各修法版本 //
  
     var currentIssue = this.state.currentIssue;
+   
+    var proposedBillItem = (currentIssue) ? currentIssue.proposedBill.map((i,k)=>{
+        //退回程序
+
+        var withdrawItem = (i.withdraw) ? 
+        <span>（<span>{i.withdraw.description}</span>）</span>: "";
+        return (
+            <div key={k}>
+                <a className="Progress-link"
+                   href={i.link} 
+                   target="_blank">{i.proposer}版</a>：{i.summary}
+                  {withdrawItem} 
+            </div>
+        )
+    }) : "";
     var currentIssueItem = (currentIssue) ? (
         <div className="Progress-focus"> 
             <div className="Progress-focusTitle">訴求 <br/> {currentIssue.title}</div>
+            <div className="Progress-focusItem">
+                <div className="Progress-focusItemLeft">民團訴求</div>
+                <div className="Progress-focusItemMain">{currentIssue.titleFull}</div>
+            </div>
             <div className="Progress-focusItem">
                 <div className="Progress-focusItemLeft">現行法律</div>
                 <div className="Progress-focusItemMain">{currentIssue.currentLaw}</div>
             </div>
             <div className="Progress-focusItem">
                 <div className="Progress-focusItemLeft">修改草案</div>
-                <div className="Progress-focusItemMain">{currentIssue.proposedLaw}</div>
+                <div className="Progress-focusItemMain">
+                   {proposedBillItem}
+                </div>
+            </div>
+            <div className="Progress-focusItem">
+                <div className="Progress-focusItemLeft">審議進度</div>
+                <div className="Progress-focusItemMain">{currentIssue.progress}</div>
             </div>
             <div className="Progress-focusItem">
                 <div className="Progress-focusItemLeft">政府回應</div>

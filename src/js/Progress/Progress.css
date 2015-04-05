@@ -324,7 +324,7 @@
 }
 .Progress-focusItem {
 	display: flex;
-	margin: 4px 0;
+	margin: 12px 0;
 	align-items: flex-start;
 	
 }
@@ -342,13 +342,15 @@
     -webkit-flex: 1;       /* Safari 6.1+. iOS 7.1+, BB10 */
     -ms-flex: 1;           /* IE 10 */
     flex: 1;               /* NEW, Spec - Firefox, Chrome, Opera */
+    line-height: 1.6;
      
 }
 .Progress-note {
 	font-size: 12px;
 }
 .Progress-link, .Progress-link:visited {
-    color: rgb(153,155,154);
+    color: rgb(123,125,124);
+    text-decoration: none;
     
 }
 
