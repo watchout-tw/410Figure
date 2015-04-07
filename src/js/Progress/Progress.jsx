@@ -126,19 +126,19 @@ var Progress = React.createClass({
             );
         }):"";
 
-        //在委員會旁邊加上「實質審查」
+        // //在委員會旁邊加上「實質審查」
         
-        var debateContentItem = (item.stage==="委員會") ?
-        <div>
-          <div className="Progress-labelSidenote">實質審查</div>
-          <div className="Progress-tri"></div>
-        </div>
-        : "";
+        // var debateContentItem = (item.stage==="委員會") ?
+        // <div>
+        //   <div className="Progress-labelSidenote">實質審查</div>
+        //   <div className="Progress-tri"></div>
+        // </div>
+        // : "";
         return (
            <div className={itemClasses}
                 key={key}>
                 <div className="Progress-unitPoint" />
-                {debateContentItem}
+               
                 <div className={lableClasses}>
                   <div>{item.stage}</div>
                 </div>

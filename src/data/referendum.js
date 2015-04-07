@@ -62,7 +62,7 @@ module.exports = {
                 }]
              },
              {
-                "progress" : "委員會審查",
+                "progress" : "委員會",
                 "bills":[
                 { 
                  "proposer" : "潘孟安",
@@ -112,7 +112,7 @@ module.exports = {
                 ]
               },
               {
-                "progress" : "委員會審查",
+                "progress" : "委員會",
                 "bills":[
                     { 
                       "proposer" : "陳歐珀",
